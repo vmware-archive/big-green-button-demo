@@ -9,7 +9,7 @@ The software modules are comprised of:
 1. A Spring Boot back-end RESTful service application (fussball-service)
 2. An Angular 2 front-end application (www)
 3. The Arduino firmware for the button hardware (arduino)
-4. The Java program that detects button presses and kicks off the Concourse pipeline (button-controller)
+4. The Java program that detects button presses and kicks off the Concourse pipeline (controller)
 5. The Concoure pipeline that builds and deploys the fussball-service and www components to Cloud Foundry (ci)
 
 ## Building and Running

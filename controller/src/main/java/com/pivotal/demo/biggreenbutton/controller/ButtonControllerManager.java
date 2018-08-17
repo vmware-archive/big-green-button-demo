@@ -13,13 +13,12 @@ import java.io.File;
 import java.util.logging.Logger;
 
 /**
- * Manages the serial port and listens for events from the serial listener.
+ * Manages the serial port and listens for events from the serial hardware.
  */
 @Component
 public class ButtonControllerManager implements ApplicationListener<HardwareEvent> {
     private final Logger logger = Logger.getLogger(getClass().getName());
 
-    private SerialPort port;
     @Value("${FLY_PATH:/usr/local/bin/fly}")
     private String flyPath;
     @Value("${FLY_TARGET:wings}")
@@ -29,38 +28,28 @@ public class ButtonControllerManager implements ApplicationListener<HardwareEven
     @Value("${FLY_JOB:job-www-prod}")
     private String job;
 
-    private ButtonControllerSerialListener listener;
+    private ButtonControllerHardware hardware;
     private long hardwareLastSeen = -1;
 
     @Autowired
-    public ButtonControllerManager(@Autowired ButtonControllerSerialListener listener) {
-        this.listener = listener;
+    public ButtonControllerManager(@Autowired ButtonControllerHardware hardware) {
+        this.hardware = hardware;
     }
 
-    boolean openPort(String sp) {
+    boolean start(String name) {
         validateFlyPath();
-
-        port = SerialPort.getCommPort(sp);
-        port.addDataListener(listener);
-        return port.openPort();
+        return hardware.start(name);
     }
 
-    boolean closePort() {
-        if (port != null) {
-            port.removeDataListener();
-            boolean r = port.closePort();
-            port = null;
-            return r;
-        } else {
-            return true;
-        }
+    boolean stop() {
+        return hardware.stop();
     }
 
-    boolean isPortOpen() {
-        return (port != null);
+    boolean isActive() {
+        return hardware.isActive();
     }
 
-    String getPorts() {
+    String getSerialPorts() {
         StringBuilder sb = new StringBuilder();
         for (SerialPort port : SerialPort.getCommPorts()) {
             sb.append(port.getSystemPortName()).append("\n");
@@ -69,7 +58,7 @@ public class ButtonControllerManager implements ApplicationListener<HardwareEven
     }
 
     void simulateButtonPress() {
-        onApplicationEvent(new HardwarePressEvent(listener));
+        onApplicationEvent(new HardwarePressEvent(hardware));
     }
 
     long getHardwareLastSeen() {

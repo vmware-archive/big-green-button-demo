@@ -18,14 +18,14 @@ public class ButtonControllerCommandProcessor {
 
     @ShellMethod("List available serial ports")
     public String ports() {
-        return manager.getPorts();
+        return manager.getSerialPorts();
     }
 
-    @ShellMethod("Get the controller status")
+    @ShellMethod("Get the hardware connection status")
     public String status() {
         StringBuilder sb = new StringBuilder();
-        if (manager.isPortOpen()) {
-            sb.append("The serial port is open");
+        if (manager.isActive()) {
+            sb.append("The hardware connection is active");
             if (manager.getHardwareLastSeen() > 0) {
                 sb.append(" and the button hardware was last heard from ").
                         append(Math.min(1, System.currentTimeMillis() - manager.getHardwareLastSeen() / 1000)).
@@ -34,27 +34,27 @@ public class ButtonControllerCommandProcessor {
                 sb.append(" but the button hardware has not yet been detected");
             }
         } else {
-            sb.append("The serial port is not open");
+            sb.append("The hardware connection has not been started");
         }
         return sb.toString();
     }
 
-    @ShellMethod("Start the controller")
+    @ShellMethod("Start the hardware connection")
     public String start(@ShellOption String sp) {
-        return (manager.openPort(sp)) ? "Controller successfully started on port \"" + sp + "\"" : "Unable to open serial port :-(";
+        return (manager.start(sp)) ? "Hardware connection successfully started using: \"" + sp + "\"" : "Unable to establish hardware connection :-(";
     }
 
     public Availability startAvailability() {
-        return (!manager.isPortOpen()) ? Availability.available() : Availability.unavailable("the controller is already running");
+        return (!manager.isActive()) ? Availability.available() : Availability.unavailable("a hardware connection already exists");
     }
 
-    @ShellMethod("Stop the controller")
+    @ShellMethod("Stop the hardware connection")
     public String stop() {
-        return (manager.closePort()) ? "Controller successfully stopped" : "Unable to stop controller :-(";
+        return (manager.stop()) ? "Hardware connection stopped" : "Unable to stop hardware connection :-(";
     }
 
     public Availability stopAvailability() {
-        return (manager.isPortOpen()) ? Availability.available() : Availability.unavailable("the controller is not running");
+        return (manager.isActive()) ? Availability.available() : Availability.unavailable("the hardware connection is not running");
     }
 
     @ShellMethod("Simulate a button press")
