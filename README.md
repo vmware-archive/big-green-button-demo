@@ -66,6 +66,16 @@ There are a number of property values used by the controller when executing the 
 | FLY_PIPELINE| The Concourse pipeline to use                            |
 | FLY_JOB     | The Concourse job within the pipeline to execute         |
 
+#### Alternate hardware implementations
+
+The actual interface to the button hardware has been abstracted behind the `ButtonHardwareController` interface. Alternate hardware implementations can be created via classes implementing that interface. These should be tagged with the `@Component` annotation as well as a `@Profile` annotation and associated profile name.
+
+To have the application use the alternate hardware implementation, simply specify the profile name in the command line as such (in this example, the profile is "test"):
+
+``java -jar build/libs/controller-0.0.1-SNAPSHOT.jar --spring.profiles.active=test``
+
+An example (useless) alternate implementation, `ButtonControllerTestHardware`, is provided as an example.
+
 ### arduino
 
 This module is the Arduino INO project file for the big green button hardware. The firmware is extremely simple and does only 2 things:

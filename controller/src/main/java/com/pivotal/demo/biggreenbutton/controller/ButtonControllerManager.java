@@ -34,6 +34,7 @@ public class ButtonControllerManager implements ApplicationListener<HardwareEven
     @Autowired
     public ButtonControllerManager(@Autowired ButtonControllerHardware hardware) {
         this.hardware = hardware;
+        logger.info("Using hardware implementation: " + hardware.getClass().getName());
     }
 
     boolean start(String name) {
