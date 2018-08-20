@@ -24,7 +24,22 @@ The resulting JAR file can be pushed to Cloud Foundry as-is. By default, it uses
 
 ### www
 
-This module is an Angular 2 application that can be built for production using the Angular CLI:
+This module is an Angular 2 application that provides the UI and makes calls to the fussball-service RESTful service.
+
+#### Configuring
+
+When the application is built for production, it is expected that an `environment.prod.ts` file exists in the `src/environments` directory. As with any other Angular 2 environments file, the contents are JSON. The two keys that are specifically needed by the application are:
+
+| Name        | Description                                              |
+| ----------- | -----------                                              |
+| apiPrefix   | The URL prefix the app uses to contact the REST service  |
+| mapsApiKey  | The Google Maps API key used to populate the map data    |
+
+Note that the Concourse pipeline that builds the app takes care of creating this file when the build is triggered. Therefore, there is no `environment.prod.ts` file in source control. Any changes needed for a demo should be made to the Concourse pipeline.
+
+#### Building
+
+The app can be built for production using the Angular CLI:
 
 ``ng build --configuration=production``
 
@@ -34,6 +49,7 @@ The default "production" configuration builds the German localized version of th
 ``ng build --configuration=production-nl``
 
 Note that there are "en", "de" and "nl" configurations that can be used for development for each localization (for example, with "ng serve").
+
 
 ### controller
 

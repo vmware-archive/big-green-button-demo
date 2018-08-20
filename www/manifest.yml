@@ -1,0 +1,6 @@
+applications:
+- name: ekfg-blue
+  memory: 64M
+  instances: 1
+  buildpack: https://github.com/cloudfoundry/staticfile-buildpack
+  path: ../../build-output2

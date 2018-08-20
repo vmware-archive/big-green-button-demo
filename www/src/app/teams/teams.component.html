@@ -1,0 +1,27 @@
+<h2 i18n>Teams</h2>
+<br/>
+<div class="row">
+  <div class="col-lg-12">
+    <app-loader *ngIf="loading"></app-loader>
+    <div *ngIf="!loading && !error">
+      <table class="table table-striped">
+        <thead class="thead-light">
+        <tr>
+          <th i18n>Teamname</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let team of teams">
+          <td>{{team.name}}</td>
+        </tr>
+        </tbody>
+      </table>
+      <nav>
+        <ul class="pagination">
+          <li class="page-item" *ngFor="let page of pages" [ngClass]="{active: (page==this.currentPage)}"><a class="page-link" (click)="setPage(page)">{{page}}</a></li>
+        </ul>
+      </nav>
+    </div>
+    <app-error-alert *ngIf="error" type="danger" i18n-msg msg="Beim Laden der Daten ist ein Fehler aufgetreten"></app-error-alert>
+  </div>
+</div>

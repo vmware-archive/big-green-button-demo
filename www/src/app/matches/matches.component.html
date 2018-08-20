@@ -1,0 +1,38 @@
+<h2 i18n>Spielen</h2>
+<div id="controls" class="row">
+  <div class="col-lg-12">
+    <span i18n>Jahre</span>: <select #t (change)="setYear(t.value)"><option *ngFor="let year of years">{{year}}</option></select>
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-12">
+    <app-loader *ngIf="loading"></app-loader>
+    <div *ngIf="!loading && !error && matches && matches.length > 0">
+      <table class="table table-striped">
+        <thead class="thead-light">
+          <tr>
+            <th i18n>Datum</th>
+            <th i18n>Spiel</th>
+            <th i18n>Entstand</th>
+            <th i18n>Austragungsort</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let match of matches">
+            <td>{{match.date | date}}</td>
+            <td>{{match.homeTeamName}} - {{match.awayTeamName}}</td>
+            <td>{{match.homeScore}} : {{match.awayScore}}</td>
+            <td>{{match.locationCity}}, {{match.locationCountry}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <nav>
+        <ul class="pagination">
+          <li class="page-item" *ngFor="let page of pages" [ngClass]="{active: (page==currentPage)}"><a class="page-link" (click)="setPage(page)">{{page}}</a></li>
+        </ul>
+      </nav>
+    </div>
+    <app-error-alert *ngIf="!loading && !error && matches.length == 0" type="primary" i18n-msg msg="Es gibt keine Aufzeichnungen für dieses Jahr"></app-error-alert>
+    <app-error-alert *ngIf="error" type="danger" i18n-msg msg="Beim Laden der Daten ist ein Fehler aufgetreten"></app-error-alert>
+  </div>
+</div>

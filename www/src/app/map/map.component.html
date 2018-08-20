@@ -1,0 +1,32 @@
+<h2 i18n>Eine Kleine Fußball Geschichte</h2>
+<div id="controls" class="row">
+  <div class="col-lg-12">
+    <span i18n>Jahre</span>: <select #t (change)="setYear(t.value)"><option *ngFor="let year of years">{{year}}</option></select>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-12">
+    <app-loader *ngIf="loading"></app-loader>
+    <div *ngIf="!loading && !error && matches && matches.length > 0">
+      <!-- mapTypeId could be roadmap, hybrid or satellite -->
+      <agm-map [latitude]="0" [longitude]="0" [zoom]="2" [minZoom]="1" [mapTypeId]="'roadmap'">
+        <agm-marker *ngFor="let match of matches" [latitude]="match.locationLat" [longitude]="match.locationLong">
+          <agm-info-window>
+              <h6>
+                {{match.locationCity}}, {{match.locationCountry}}<br/>
+                <small class="text-muted">{{match.date | date}}</small>
+              </h6>
+              <div class="text-center">
+                <table class="table table-sm">
+                  <tr><td class="text-secondary">{{match.homeTeamName}}</td><td class="text-secondary">{{match.awayTeamName}}</td></tr>
+                  <tr><td><h4 class="text-primary">{{match.homeScore}}</h4></td><td><h4 class="text-primary">{{match.awayScore}}</h4></td></tr>
+                </table>
+              </div>
+          </agm-info-window>
+        </agm-marker>
+      </agm-map>
+    </div>
+    <app-error-alert *ngIf="error" type="danger" i18n-msg msg="Beim Laden der Daten ist ein Fehler aufgetreten"></app-error-alert>
+    <app-error-alert *ngIf="!loading && !error && matches.length == 0" type="primary" i18n-msg msg="Es gibt keine Aufzeichnungen für dieses Jahr"></app-error-alert>
+  </div>
+</div>

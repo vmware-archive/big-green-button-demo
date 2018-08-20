@@ -1,0 +1,40 @@
+<header>
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand" style="color: lightblue;"><i class="fa fa-futbol"></i>&nbsp;<span i18n>EKFG</span></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['map']" routerLinkActive="active" i18n>Karte</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['matches']" routerLinkActive="active" i18n>Spielen</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['teams']" routerLinkActive="active" i18n>Teams</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
+<main role="main" id="main" class="container">
+  <router-outlet></router-outlet>
+</main>
+<footer class="footer bg-secondary">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-8">
+        <img src="../assets/pivotal-cf.png">
+      </div>
+      <div class="col-sm-4 text-right">
+        <select (change)="onLocaleChange($event.target.value)">
+          <option value="de" [selected]="locale=='de'">Deutsch</option>
+          <option value="en" [selected]="locale=='en'">English</option>
+          <option value="nl" [selected]="locale=='nl'">Nederlands</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</footer>

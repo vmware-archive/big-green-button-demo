@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="c4550270dc47276d4f216d3f4d8e65cfb040345d" datatype="html">
+        <source>EKFG</source>
+        <target>VEBS</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.ts</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="86a7b0628f58a0335dc84f3f154b9b6cd4bc3ca9" datatype="html">
+        <source>Karte</source>
+        <target>Kaart</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.ts</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="f3f637d8a6fc94638159cd49e9bc6d42782e0718" datatype="html">
+        <source>Spielen</source>
+        <target>Wedstrijden</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.ts</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/matches/matches.component.ts</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8a6afcf38cbb3107a31ae8636805be7f65182dc8" datatype="html">
+        <source>Teams</source>
+        <target>Teams</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.ts</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/teams/teams.component.ts</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="fe25a8545710fab8f0eae4e03830bb2ee174c946" datatype="html">
+        <source>Jahre</source>
+	<target>Jaar</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/matches/matches.component.ts</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/map/map.component.ts</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1470eabded471793a7ef2271e2a1dc30a1a3265f" datatype="html">
+        <source>Datum</source>
+        <target>Datum</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/matches/matches.component.ts</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="d259ebfa9d54009a0c47216b3a36ffa7d172c5a6" datatype="html">
+        <source>Spiel</source>
+        <target>Wedstrijd</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/matches/matches.component.ts</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8dbaec7a3d6564f7f91505c87e7942d074085e1f" datatype="html">
+        <source>Entstand</source>
+        <target>Eindstand</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/matches/matches.component.ts</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="79cb7599b3a0585d52bc4f906a4d4d18e5cf34f3" datatype="html">
+        <source>Austragungsort</source>
+        <target>Locatie</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/matches/matches.component.ts</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="bbd214bb36ecbd7ed29fd6f2272be650792e8325" datatype="html">
+        <source>Es gibt keine Aufzeichnungen für dieses Jahr</source>
+        <target>Voor dit jaar is geen informatie beschikbaar</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/matches/matches.component.ts</context>
+          <context context-type="linenumber">35</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/map/map.component.ts</context>
+          <context context-type="linenumber">29</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="00c478312ada3a50d2f64f3fd048f5f5d60c2e76" datatype="html">
+        <source>Beim Laden der Daten ist ein Fehler aufgetreten</source>
+        <target>Er is een fout opgetreden bij het ophalen van de gegevens</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/matches/matches.component.ts</context>
+          <context context-type="linenumber">36</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/teams/teams.component.ts</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/map/map.component.ts</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="e25c92357651e7fb616603fe7dce922096ce81c0" datatype="html">
+        <source>Teamname</source>
+        <target>Team naam</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/teams/teams.component.ts</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="f8e2f7b7ac6feabb4576132a9bb08942166a1477" datatype="html">
+        <source>Eine Kleine Fußball Geschichte</source>
+        <target>Voetbal: een beknopte samenvatting</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/map/map.component.ts</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="eb006719e3ceb0cc9ee28c16d29d09c92e5f9922" datatype="html">
+        <source>Prost Mahlzeit!</source>
+        <target>Oeps!</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/error-alert/error-alert.component.ts</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
