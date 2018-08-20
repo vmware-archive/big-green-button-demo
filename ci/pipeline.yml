@@ -85,7 +85,7 @@ resources:
 - name: big-green-www
   type: git
   source:
-    uri: ((github.url))
+    uri: ((github-url))
     branch: master
     paths:
       - www
@@ -93,7 +93,7 @@ resources:
 - name: big-green-service
   type: git
   source:
-    uri: ((github.url))
+    uri: ((github-url))
     branch: master
     paths:
       - fussball-service

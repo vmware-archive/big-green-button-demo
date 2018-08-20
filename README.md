@@ -124,3 +124,4 @@ It does the following:
 | pws-space           | The Cloud Foundry space to deploy to             |
 | pws-username        | The Cloud Foundry user to deploy with            |
 | pws-password        | The password for the Cloud Foundry user          |
+| github-url          | The GitHub repository to use                     |
