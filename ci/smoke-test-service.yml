@@ -1,0 +1,13 @@
+---
+platform: linux
+
+image_resource:
+  type: docker-image
+  source: {repository: gradle, tag: 4.7-jdk8}
+
+inputs:
+- name: big-green-service
+
+run:
+  path: big-green-service/ci/smoke-test-service.sh
+  user: root

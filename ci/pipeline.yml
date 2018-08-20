@@ -1,0 +1,109 @@
+---
+jobs:
+
+- name: job-unittest-service
+  public: true
+  plan:
+  - get: big-green-service
+    trigger: true
+  - task: unit-test-service
+    file: big-green-service/ci/unit-test-service.yml
+
+- name: job-deploy-service
+  public: true
+  serial: true
+  plan:
+  - get: big-green-service
+    passed: [job-unittest-service]
+    trigger: true
+  - task: build-service
+    file: big-green-service/ci/build-service.yml
+  - put: pws
+    params:
+      manifest: big-green-service/fussball-service/manifest.yml
+
+- name: job-smoketest-service
+  public: true
+  plan:
+  - get: big-green-service
+    passed: [job-deploy-service]
+    trigger: true
+  - task: smoke-test-service
+    file: big-green-service/ci/smoke-test-service.yml
+
+- name: job-deploy-www
+  public: true
+  serial: true
+  plan:
+  - get: big-green-www
+    trigger: true
+  - task: build-www
+    file: big-green-www/ci/build-www.yml
+    params:
+      API_PREFIX: ((api-prefix))
+      GOOGLE_MAPS_API_KEY: ((google-maps-api-key))
+  - put: pws
+    params:
+      manifest: big-green-www/www/manifest.yml
+
+- name: job-service-prod
+  public: true
+  serial: true
+  plan:
+  - get: big-green-service
+    trigger: false
+  - task: prod-push
+    file: big-green-service/ci/prod-service.yml
+    params:
+      CF_SERVICE_NAME: ((service-app-name))
+      CF_API: https://api.run.pivotal.io
+      CF_DOMAIN: cfapps.io
+      CF_ORG: ((pws-org))
+      CF_SPACE: ((pws-space))
+      CF_USER: ((pws-username))
+      CF_PASSWD: ((pws-password))
+
+- name: job-www-prod
+  public: true
+  serial: true
+  plan:
+  - get: big-green-www
+    trigger: false
+  - task: prod-push
+    file: big-green-www/ci/prod-www.yml
+    params:
+      CF_WWW_NAME: ((www-app-name))
+      CF_API: https://api.run.pivotal.io
+      CF_DOMAIN: cfapps.io
+      CF_ORG: ((pws-org))
+      CF_SPACE: ((pws-space))
+      CF_USER: ((pws-username))
+      CF_PASSWD: ((pws-password))
+
+resources:
+
+- name: big-green-www
+  type: git
+  source:
+    uri: ((github.url))
+    branch: master
+    paths:
+      - www
+
+- name: big-green-service
+  type: git
+  source:
+    uri: ((github.url))
+    branch: master
+    paths:
+      - fussball-service
+
+- name: pws
+  type: cf
+  source:
+    api: https://api.run.pivotal.io
+    username: ((pws-username))
+    password: ((pws-password))
+    organization: ((pws-org))
+    space: ((pws-space))
+    skip_cert_check: false
