@@ -1,6 +1,5 @@
 ---
 applications:
-- name: fussball-service
-  path: build/libs/fussball-service-0.0.1-SNAPSHOT.jar
+- path: build/libs/fussball-service-0.0.1-SNAPSHOT.jar
   memory: 1G
   instances: 1
