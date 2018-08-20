@@ -50,7 +50,6 @@ The default "production" configuration builds the German localized version of th
 
 Note that there are "en", "de" and "nl" configurations that can be used for development for each localization (for example, with "ng serve").
 
-
 ### controller
 
 This module is a Java command-line application written using Spring Shell that can be built with Gradle:
@@ -82,6 +81,8 @@ There are a number of property values used by the controller when executing the 
 | FLY_PIPELINE| The Concourse pipeline to use                            |
 | FLY_JOB     | The Concourse job within the pipeline to execute         |
 
+Note: The app requires that you have already logged in with fly when the button is pressed!
+
 #### Alternate hardware implementations
 
 The actual interface to the button hardware has been abstracted behind the `ButtonHardwareController` interface. Alternate hardware implementations can be created via classes implementing that interface. These should be tagged with the `@Component` annotation as well as a `@Profile` annotation and associated profile name.
@@ -108,3 +109,18 @@ It does the following:
 
 1. If a change to the www module is detected in Github, the pipeline will build and deploy the application to the ekfg-blue Cloud Foundry application. This is considered the "non-production" endpoint that can be used for application testing and UAT.
 2. The job-www-prod job must be manually executed. It will switch the ekfg-blue (non-production) application to the ekfg (production) application. This is the job that is executed by the button-controller application when the physical green button is pressed.
+
+#### Configuring
+
+`pipeline.yml` is the main pipeline file for the project. There are a number of parameters that should be set when creating the pipeline:
+
+| Name                | Description                                      |
+| -----------         | -----------                                      |
+| api-prefix          | The URL prefix used to make API calls            |
+| google-maps-api-key | The Google Maps API key to use for map retrieval |
+| service-app-name    | The name to use for the service app deploy       |
+| www-app-name        | The name to use for the www app deploy           |
+| pws-org             | The Cloud Foundry org to deploy to               |
+| pws-space           | The Cloud Foundry space to deploy to             |
+| pws-username        | The Cloud Foundry user to deploy with            |
+| pws-password        | The password for the Cloud Foundry user          |
