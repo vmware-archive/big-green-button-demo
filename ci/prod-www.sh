@@ -11,7 +11,7 @@ if [ $? == 0 ]; then
 	echo "Adding blue route to www"
 	cf map-route $CF_WWW_NAME_BLUE $CF_DOMAIN -n $CF_WWW_NAME_GREEN
 	echo "Removing green www route"
-	cf unmap-route $CF_WWW_NAME $CF_DOMAIN -n $CF_WWW_NAME_GREEN
+	cf unmap-route $CF_WWW_NAME_GREEN $CF_DOMAIN -n $CF_WWW_NAME_GREEN
 	echo "Deleting green www"
 	cf delete $CF_WWW_NAME_GREEN -f
 	echo "Renaming blue www to green"
