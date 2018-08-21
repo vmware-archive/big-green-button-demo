@@ -10,10 +10,8 @@ if [ $? == 0 ]; then
 	set -e
 	echo "Adding pre-prod route to prod"
 	cf map-route $CF_WWW_NAME_BLUE $CF_DOMAIN -n $CF_WWW_NAME_GREEN
-	cf check-route $CF_WWW_NAME_GREEN $CF_DOMAIN | grep 'does exist' &> /dev/null
+	cf app $CF_WWW_NAME_GREEN | grep 'state' &> /dev/null
 	if [ $? == 0 ]; then
-		echo "Removing prod route"
-		cf unmap-route $CF_WWW_NAME_GREEN $CF_DOMAIN -n $CF_WWW_NAME_GREEN
 		echo "Deleting prod app"
 		cf delete $CF_WWW_NAME_GREEN -f
 	fi
