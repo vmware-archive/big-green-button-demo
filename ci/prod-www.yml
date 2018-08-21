@@ -6,7 +6,7 @@ image_resource:
   source: {repository: nulldriver/cf-cli-resource, tag: "2.6.0"}
 
 inputs:
-- name: green-green-www
+- name: big-green-www
 
 run:
   path: big-green-www/ci/prod-www.sh
