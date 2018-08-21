@@ -12,3 +12,4 @@ outputs:
 
 run:
   path: big-green-service/ci/build-service.sh
+  user: root
