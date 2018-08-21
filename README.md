@@ -2,6 +2,14 @@
 
 These software modules and their associated Arduino-based hardware component (the eponymous "big green button") demonstrate a complete SPA application / RESTful service combination deployed to Cloud Foundry in a zero-downtime fashion using Concourse pipelines.
 
+## Quick Start
+
+1. Clone this repository.
+2. Go to the `ci` directory and copy `pipeline-params.yml.sample` to `pipeline-params.yml`
+3. Edit `pipeline-params.yml` for your specific deployment
+4. Deploy the pipeline using fly. For example: `fly -t wings set-pipeline -p big-green-button -c pipeline.yml --load-vars-from pipeline-params.yml`
+5. TBD
+
 ## Architecture
 
 The software modules are comprised of:
@@ -114,14 +122,14 @@ It does the following:
 
 `pipeline.yml` is the main pipeline file for the project. There are a number of parameters that should be set when creating the pipeline:
 
-| Name                | Description                                      |
-| -----------         | -----------                                      |
-| api-prefix          | The URL prefix used to make API calls            |
-| google-maps-api-key | The Google Maps API key to use for map retrieval |
-| service-app-name    | The name to use for the service app deploy       |
-| www-app-name        | The name to use for the www app deploy           |
-| pws-org             | The Cloud Foundry org to deploy to               |
-| pws-space           | The Cloud Foundry space to deploy to             |
-| pws-username        | The Cloud Foundry user to deploy with            |
-| pws-password        | The password for the Cloud Foundry user          |
-| github-url          | The GitHub repository to use                     |
+| Name                | Description                                                                          |
+| -----------         | -----------                                                                          |
+| api-prefix          | The URL prefix used to make API calls (e.g. http://service-app-name.apps.pivotal.io) |
+| google-maps-api-key | The Google Maps API key to use for map retrieval                                     |
+| service-app-name    | The name to use for the service app deploy                                           |
+| www-app-name        | The name to use for the www app deploy                                               |
+| pws-org             | The Cloud Foundry org to deploy to                                                   |
+| pws-space           | The Cloud Foundry space to deploy to                                                 |
+| pws-username        | The Cloud Foundry user to deploy with                                                |
+| pws-password        | The password for the Cloud Foundry user                                              |
+| github-url          | The GitHub repository to use                                                         |

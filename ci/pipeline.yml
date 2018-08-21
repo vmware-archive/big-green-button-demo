@@ -21,6 +21,7 @@ jobs:
   - put: pws
     params:
       manifest: big-green-service/fussball-service/manifest.yml
+      current_app_name: ((service-app-name))
 
 - name: job-smoketest-service
   public: true
@@ -45,6 +46,7 @@ jobs:
   - put: pws
     params:
       manifest: big-green-www/www/manifest.yml
+      current_app_name: ((www-app-name))
 
 - name: job-service-prod
   public: true
