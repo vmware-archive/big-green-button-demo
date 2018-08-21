@@ -122,14 +122,15 @@ It does the following:
 
 `pipeline.yml` is the main pipeline file for the project. There are a number of parameters that should be set when creating the pipeline:
 
-| Name                | Description                                                                          |
-| -----------         | -----------                                                                          |
-| api-prefix          | The URL prefix used to make API calls (e.g. http://service-app-name.apps.pivotal.io) |
-| google-maps-api-key | The Google Maps API key to use for map retrieval                                     |
-| service-app-name    | The name to use for the service app deploy                                           |
-| www-app-name        | The name to use for the www app deploy                                               |
-| pws-org             | The Cloud Foundry org to deploy to                                                   |
-| pws-space           | The Cloud Foundry space to deploy to                                                 |
-| pws-username        | The Cloud Foundry user to deploy with                                                |
-| pws-password        | The password for the Cloud Foundry user                                              |
-| github-url          | The GitHub repository to use                                                         |
+| Name                | Description                                      |
+| -----------         | -----------                                      |
+| api-prefix          | The URL prefix used to make API calls            |
+| google-maps-api-key | The Google Maps API key to use for map retrieval |
+| service-app-name    | The name to use for the service app deploy       |
+| www-app-name-preprod| The name to use for the www pre-production app   |
+| www-app-name-prod   | The name to use for the www production app       |
+| pws-org             | The Cloud Foundry org to deploy to               |
+| pws-space           | The Cloud Foundry space to deploy to             |
+| pws-username        | The Cloud Foundry user to deploy with            |
+| pws-password        | The password for the Cloud Foundry user          |
+| github-url          | The GitHub repository to use                     |

@@ -46,7 +46,7 @@ jobs:
   - put: pws
     params:
       manifest: big-green-www/www/manifest.yml
-      current_app_name: ((www-app-name))
+      current_app_name: ((www-app-name-preprod))
 
 - name: job-service-prod
   public: true
@@ -74,7 +74,8 @@ jobs:
   - task: prod-push
     file: big-green-www/ci/prod-www.yml
     params:
-      CF_WWW_NAME: ((www-app-name))
+      CF_WWW_NAME_BLUE: ((www-app-name-preprod))
+      CF_WWW_NAME_GREEN: ((www-app-name-prod))
       CF_API: https://api.run.pivotal.io
       CF_DOMAIN: cfapps.io
       CF_ORG: ((pws-org))

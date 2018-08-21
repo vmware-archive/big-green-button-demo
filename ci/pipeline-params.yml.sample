@@ -6,4 +6,5 @@ pws-password: $YOUR_PASSWORD_HERE
 pws-space: $YOUR_SPACE_HERE
 pws-username: $YOUR_USERNAME_HERE
 service-app-name: $YOUR_SERVICE_APP_NAME_HERE
-www-app-name: $YOUR_WWW_APP_NAME_HERE
+www-app-name-preprod: $YOUR_WWW_APP_NAME_PREPROD_HERE
+www-app-name-prod: $YOUR_WWW_APP_NAME_PROD_HERE
