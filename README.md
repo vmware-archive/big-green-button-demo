@@ -8,7 +8,10 @@ These software modules and their associated Arduino-based hardware component (th
 2. Go to the `ci` directory and copy `pipeline-params.yml.sample` to `pipeline-params.yml`
 3. Edit `pipeline-params.yml` for your specific deployment
 4. Deploy the pipeline using fly. For example: `fly -t wings set-pipeline -p big-green-button -c pipeline.yml --load-vars-from pipeline-params.yml`
-5. TBD
+5. Unpause the new pipeline. For example: `fly -t wings unpause-pipeline -p big-green-button`
+6. Wait for the pipeline to execute through completely. This will deploy the app to pre-production. You can confirm this by hitting the pre-production URL.
+7. Push the pre-production application into production by manually executing the "job-www-prod" job in Concourse. This is the same job that will be triggered when physically pressing the green button.
+8. TBD
 
 ## Architecture
 

@@ -9,7 +9,7 @@ cf check-route $CF_SERVICE_NAME-blue $CF_DOMAIN | grep 'does exist' &> /dev/null
 if [ $? == 0 ]; then
 	set -e
 	echo "Adding blue route to service"
-	cf map-route f$CF_SERVICE_NAME-blue $CF_DOMAIN -n $CF_SERVICE_NAME
+	cf map-route $CF_SERVICE_NAME-blue $CF_DOMAIN -n $CF_SERVICE_NAME
 	echo "Removing green service route"
 	cf unmap-route $CF_SERVICE_NAME $CF_DOMAIN -n $CF_SERVICE_NAME
 	echo "Deleting green service"

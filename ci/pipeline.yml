@@ -31,6 +31,8 @@ jobs:
     trigger: true
   - task: smoke-test-service
     file: big-green-service/ci/smoke-test-service.yml
+    params:
+      API_PREFIX: ((api-prefix))
 
 - name: job-deploy-www
   public: true

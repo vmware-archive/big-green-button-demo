@@ -1,4 +1,4 @@
-# Big Green Button Angular 2 Application
+# Big Green Button Angular 2 Application (EKFG)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.0.
 
