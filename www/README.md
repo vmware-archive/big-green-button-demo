@@ -1,4 +1,4 @@
-# Www
+# Big Green Button Angular 2 Application
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.0.
 
