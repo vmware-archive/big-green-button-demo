@@ -40,8 +40,8 @@ public class ButtonControllerCommandProcessor {
     }
 
     @ShellMethod("Start the hardware connection")
-    public String start(@ShellOption String sp) {
-        return (manager.start(sp)) ? "Hardware connection successfully started using: \"" + sp + "\"" : "Unable to establish hardware connection :-(";
+    public String start(@ShellOption String port) {
+        return (manager.start(port)) ? "Hardware connection successfully started using: \"" + port + "\"" : "Unable to establish hardware connection :-(";
     }
 
     public Availability startAvailability() {
