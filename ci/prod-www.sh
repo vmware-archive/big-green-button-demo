@@ -15,7 +15,7 @@ if [ $? == 0 ]; then
 	if [ $? == 0 ]; then
 		set -e
 		echo "Deleting prod app"
-		cf delete $CF_WWW_NAME_GREEN -f -r
+		cf delete $CF_WWW_NAME_GREEN -f
 	fi
 	set -e
 	echo "Renaming pre-prod app to prod"

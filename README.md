@@ -11,7 +11,8 @@ These software modules and their associated Arduino-based hardware component (th
 5. Unpause the new pipeline. For example: `fly -t wings unpause-pipeline -p big-green-button`
 6. Wait for the pipeline to execute through completely. This will deploy the app to pre-production. You can confirm this by hitting the pre-production URL.
 7. Push the pre-production application into production by manually executing the "job-www-prod" job in Concourse. This is the same job that will be triggered when physically pressing the green button.
-8. TBD
+8. Commit a change to the web app (www directory). For example, you can switch the background color in app.component.html.
+9. After the pipeline has deployed to UAT, press the button to do the blue/green switch! 
 
 ## Architecture
 
@@ -84,6 +85,8 @@ When it is run, the application will present you with a shell prompt. Type "help
 #### Concourse related variables
 
 There are a number of property values used by the controller when executing the Concourse pipeline. There are defaults for each and you can use the "config" command in the shell to view the current values. They can be overridden using the standard Spring value override mechanisms (e.g. via environment variables).
+
+``java -jar build/libs/controller-0.0.1-SNAPSHOT.jar --FLY_PIPELINE=your-pipeline``
 
 | Name        | Description                                              |
 | ----------- | -----------                                              |
