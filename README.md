@@ -10,9 +10,10 @@ These software modules and their associated Arduino-based hardware component (th
 4. Deploy the pipeline using fly. For example: `fly -t wings set-pipeline -p big-green-button -c pipeline.yml --load-vars-from pipeline-params.yml`
 5. Unpause the new pipeline. For example: `fly -t wings unpause-pipeline -p big-green-button`
 6. Wait for the pipeline to execute through completely. This will deploy the app to pre-production. You can confirm this by hitting the pre-production URL.
-7. Push the pre-production application into production by manually executing the "job-www-prod" job in Concourse. This is the same job that will be triggered when physically pressing the green button.
-8. Commit a change to the web app (www directory). For example, you can switch the background color in app.component.html.
-9. After the pipeline has deployed to UAT, press the button to do the blue/green switch! 
+7. Connect the green button hardware to a Mac laptop via its USB cable.
+8. Build and run the controller application as described below to connect to the button.
+9. Commit a visually distinct change to the web app (www directory). For example, you can switch the map background between "roadmap" and "satellite" in map.component.html or switch the app background color in app.component.html. There are comments in each of those files indicating what should change.
+10. After the pipeline has deployed to UAT, press the button to do the blue/green switch! 
 
 ## Architecture
 
@@ -82,6 +83,8 @@ When it is run, the application will present you with a shell prompt. Type "help
 4. Type "start PORT_NAME" where PORT_NAME is the string identified in step 3.
 5. Type "status" to see the status of the button hardware.
 
+Note: If you do not see the button hardware when you run the "ports" command, it is possible you need CH340/CH341 USB drivers. You can download the Mac drivers from this link https://0xcf.com/2015/03/13/chinese-arduinos-with-ch340-ch341-serial-usb-chip-on-os-x-yosemite/#
+
 #### Concourse related variables
 
 There are a number of property values used by the controller when executing the Concourse pipeline. There are defaults for each and you can use the "config" command in the shell to view the current values. They can be overridden using the standard Spring value override mechanisms (e.g. via environment variables).
@@ -121,8 +124,8 @@ The Concourse pipeline that does the build and deployment to Cloud Foundry.
 
 It does the following:
 
-1. If a change to the www module is detected in Github, the pipeline will build and deploy the application to the ekfg-blue Cloud Foundry application. This is considered the "non-production" endpoint that can be used for application testing and UAT.
-2. The job-www-prod job must be manually executed. It will switch the ekfg-blue (non-production) application to the ekfg (production) application. This is the job that is executed by the button-controller application when the physical green button is pressed.
+1. If a change to the www module is detected in Github, the pipeline will build and deploy the application to the pre-production Cloud Foundry application (the name of which is defined in www-app-name-preprod below). In demo-speak, this is the endpoint that is used for application testing and UAT.
+2. The job-www-prod job must be manually executed. It will switch the non-production application to the production application (the name of which is defined in the www-app-name-prod below). This is the job that is executed by the button-controller application when the physical green button is pressed.
 
 #### Configuring
 
