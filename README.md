@@ -4,16 +4,19 @@ These software modules and their associated Arduino-based hardware component (th
 
 ## Quick Start
 
-1. Clone this repository.
-2. Go to the `ci` directory and copy `pipeline-params.yml.sample` to `pipeline-params.yml`
-3. Edit `pipeline-params.yml` for your specific deployment
-4. Deploy the pipeline using fly. For example: `fly -t wings set-pipeline -p big-green-button -c pipeline.yml --load-vars-from pipeline-params.yml`
-5. Unpause the new pipeline. For example: `fly -t wings unpause-pipeline -p big-green-button`
-6. Wait for the pipeline to execute through completely. This will deploy the app to pre-production. You can confirm this by hitting the pre-production URL.
-7. Connect the green button hardware to a Mac laptop via its USB cable.
-8. Build and run the controller application as described below to connect to the button.
-9. Commit a visually distinct change to the web app (www directory). For example, you can switch the map background between "roadmap" and "satellite" in map.component.html or switch the app background color in app.component.html. There are comments in each of those files indicating what should change.
-10. After the pipeline has deployed to UAT, press the button to do the blue/green switch! 
+1. Fork this repository.
+2. Clone the fork of the repository.
+3. If you don't already have one, create a Google Maps Javascript API key.
+4. Go to the `ci` directory and copy `pipeline-params.yml.sample` to `pipeline-params.yml`
+5. Edit `pipeline-params.yml` for your specific deployment
+6. Login to Concourse using fly. For example: `fly -t wings login -c https://wings.pivotal.io -n pa-emea` 
+7. Deploy the pipeline using fly. For example: `fly -t wings set-pipeline -p $YOUR_PIPELINE_NAME -c pipeline.yml --load-vars-from pipeline-params.yml`
+8. Unpause the new pipeline using fly. For example: `fly -t wings unpause-pipeline -p $YOUR_PIPELINE_NAME`
+9. Wait for the pipeline to execute through completely. This will deploy the app to pre-production. You can confirm this by hitting the pre-production URL you defined in step 5.
+10. Connect the green button hardware to a Mac laptop via its USB cable.
+11. Build and run the controller application as described below to connect to the button.
+12. Commit a visually distinct change to the web app (www directory). For example, you can switch the map background between "roadmap" and "satellite" in map.component.html or switch the app background color in app.component.html. There are comments in each of those files indicating what should change.
+13. After the pipeline has deployed to UAT, press the button to do the blue/green switch! 
 
 ## Architecture
 
