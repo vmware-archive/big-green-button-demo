@@ -20,7 +20,7 @@
       </trans-unit>
       <trans-unit id="f3f637d8a6fc94638159cd49e9bc6d42782e0718" datatype="html">
         <source>Spielen</source>
-        <target>Spielen</target>
+        <target>Spiele</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/app.component.ts</context>
           <context context-type="linenumber">12</context>
