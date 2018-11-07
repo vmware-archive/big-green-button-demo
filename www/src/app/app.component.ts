@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { environment } from '../environments/environment';
+import { VersionCheckService} from './version-check.service';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +11,7 @@ import { Title } from '@angular/platform-browser';
 export class AppComponent {
   locale = 'de';
 
-  constructor(private titleService: Title) {
+  constructor(private titleService: Title, private versionCheckService: VersionCheckService) {
     const path: string = location.pathname.toString();
     if (path.startsWith('/en/')) {
       this.locale = 'en';
@@ -28,5 +30,9 @@ export class AppComponent {
     } else {
       window.location.href = '/' + value + '/';
     }
+  }
+
+  ngOnInit() {
+    this.versionCheckService.initVersionCheck(environment.versionCheckURL, environment.refreshRate);  
   }
 }

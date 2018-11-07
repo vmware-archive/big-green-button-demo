@@ -13,6 +13,7 @@ import { TeamsComponent } from './teams/teams.component';
 import { MapComponent } from './map/map.component';
 import { LoaderComponent } from './loader/loader.component';
 import { ErrorAlertComponent } from './error-alert/error-alert.component';
+import { VersionCheckService} from './version-check.service';
 
 import localeDe from '@angular/common/locales/de';
 import localeNl from '@angular/common/locales/nl';
@@ -32,7 +33,8 @@ registerLocaleData(localeNl, 'nl');
     })
   ],
   providers: [
-    Title
+    Title,
+    VersionCheckService
   ],
   declarations: [ AppComponent, MatchesComponent, TeamsComponent, MapComponent, LoaderComponent, ErrorAlertComponent ],
   bootstrap: [ AppComponent ]

@@ -45,6 +45,8 @@ jobs:
     params:
       API_PREFIX: ((api-prefix))
       GOOGLE_MAPS_API_KEY: ((google-maps-api-key))
+      VERSION_CHECK_URL: ((version-check-url))
+      REFRESH_RATE: ((refresh-rate))
   - put: pws
     params:
       manifest: big-green-www/www/manifest.yml

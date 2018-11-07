@@ -50,6 +50,8 @@ When the application is built for production, it is expected that an `environmen
 | ----------- | -----------                                              |
 | apiPrefix   | The URL prefix the app uses to contact the REST service  |
 | mapsApiKey  | The Google Maps API key used to populate the map data    |
+| versionUrl  | The URL to poll for app hash changes (default is fine)   |
+| refreshRate | How frequently the GUI polls to refresh after app update |
 
 Note that the Concourse pipeline that builds the app takes care of creating this file when the build is triggered. Therefore, there is no `environment.prod.ts` file in source control. Any changes needed for a demo should be made to the Concourse pipeline.
 
