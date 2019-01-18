@@ -32,7 +32,9 @@ jobs:
   - task: smoke-test-service
     file: big-green-service/ci/smoke-test-service.yml
     params:
-      API_PREFIX: ((api-prefix))
+      DOMAIN: ((domain))
+      PROTOCOL: ((protocol))
+      API_HOST: ((api-host))
 
 - name: job-deploy-www
   public: true
@@ -43,10 +45,13 @@ jobs:
   - task: build-www
     file: big-green-www/ci/build-www.yml
     params:
-      API_PREFIX: ((api-prefix))
+      DOMAIN: ((domain))
+      PROTOCOL: ((protocol))
+      API_HOST: ((api-host))
       GOOGLE_MAPS_API_KEY: ((google-maps-api-key))
-      VERSION_CHECK_URL: ((version-check-url))
+      VERSION_CHECK_PATH: ((version-check-path))
       REFRESH_RATE: ((refresh-rate))
+      APP_NAME_PROD: ((www-app-name-prod))
   - put: pws
     params:
       manifest: big-green-www/www/manifest.yml

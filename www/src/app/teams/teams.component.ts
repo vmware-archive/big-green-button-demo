@@ -32,7 +32,7 @@ export class TeamsComponent implements OnInit {
     this.loading = true;
     this.error = false;
     const p: number = this.currentPage - 1;
-    this._http.get(environment.apiPrefix + '/teams?page=' + p)
+    this._http.get(environment.protocol + '://' + environment.apiHost + '.' + environment.domain + '/teams?page=' + p)
       .subscribe(data => {
         this.teams = data['_embedded']['teams'];
         this.currentPage = data['page']['number'] + 1;

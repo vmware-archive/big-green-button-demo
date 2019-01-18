@@ -33,6 +33,6 @@ export class AppComponent {
   }
 
   ngOnInit() {
-    this.versionCheckService.initVersionCheck(environment.versionCheckURL, environment.refreshRate);  
+    this.versionCheckService.initVersionCheck(environment.protocol, environment.domain, environment.appNameProd, environment.versionCheckPath, environment.refreshRate);  
   }
 }

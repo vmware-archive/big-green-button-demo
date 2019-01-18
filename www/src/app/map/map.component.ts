@@ -31,7 +31,7 @@ export class MapComponent implements OnInit {
   loadData() {
     this.loading = true;
     this.error = false;
-    this._http.get(environment.apiPrefix + '/matches/search/findAllByYearOrderByDateDesc?projection=matchSummary&year=' + this.currentYear + '&size=200')
+    this._http.get(environment.protocol + '://' + environment.apiHost + '.' + environment.domain + '/matches/search/findAllByYearOrderByDateDesc?projection=matchSummary&year=' + this.currentYear + '&size=200')
       .subscribe(data => {
         this.matches = data['_embedded']['matches'] ? data['_embedded']['matches'] : [];
         this.loading = false;

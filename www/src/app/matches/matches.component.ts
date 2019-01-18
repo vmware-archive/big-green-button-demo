@@ -41,7 +41,7 @@ export class MatchesComponent implements OnInit {
   loadData() {
     this.loading = true;
     this.error = false;
-    const url = environment.apiPrefix + '/matches/search/findAllByYearOrderByDateDesc?year=' + this.currentYear + '&projection=matchSummary&page=' + (this.currentPage - 1);
+    const url = environment.protocol + '://' + environment.apiHost + '.' + environment.domain + '/matches/search/findAllByYearOrderByDateDesc?year=' + this.currentYear + '&projection=matchSummary&page=' + (this.currentPage - 1);
     this._http.get(url)
       .subscribe(data => {
         this.matches = data['_embedded']['matches'] ? data['_embedded']['matches'] : [];
