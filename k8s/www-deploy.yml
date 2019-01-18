@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fussball-www
+  labels:
+    app: fussball-www
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fussball-www
+  template:
+    metadata:
+      labels:
+        app: fussball-www
+    spec:
+      containers:
+      - name: fussball-www
+        image: eu.gcr.io/pa-dnoguerol/fussball-www:0.0.2
+        ports:
+        - containerPort: 80

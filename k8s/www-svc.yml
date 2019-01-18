@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: fussball-www
+  labels:
+    app: fussball-www
+spec:
+  type: NodePort
+  ports:
+  - protocol: TCP
+    port: 80
+    nodePort: 30081
+  selector:
+    app: fussball-www
